@@ -28,8 +28,8 @@ public class MainController {
 		mainModel.setUsedLetterCanvas(mainView.getUsedLetterCanvas());
 		mainModel.setCenterPaneCanvas(mainView.getCenterPaneCanvas());
 
+		mView.show();
 		mainModel.startNewRound();
-		mView.showAndWait();
 	}
 
 	public MainView getMainView() {
