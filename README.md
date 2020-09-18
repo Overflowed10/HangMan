@@ -2,4 +2,4 @@
 
 HangMan game i coded in Eclipse with JavaFX in my free time. It took me ~20 to 30 hours.
 
-![HangMan](https://imgur.com/ccgSrkj)
+![HangMan](https://i.imgur.com/ccgSrkj.png)
