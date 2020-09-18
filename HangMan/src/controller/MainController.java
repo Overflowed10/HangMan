@@ -12,8 +12,8 @@ public class MainController {
 	}
 
 	public void startUp() {
-		MenuBarController menuBarController = new MenuBarController(mainModel);
 		BottomInputPaneController bottomInputPaneController = new BottomInputPaneController(mainModel);
+		MenuBarController menuBarController = new MenuBarController(mainModel, bottomInputPaneController);
 
 		MainView mView = new MainView(this, menuBarController, bottomInputPaneController, mainModel);
 		mView.setResizable(false);
@@ -27,8 +27,8 @@ public class MainController {
 		mainModel.setDottedLineCanvas(mainView.getBottomDottedLinePaneResizableCanvas());
 		mainModel.setUsedLetterCanvas(mainView.getUsedLetterCanvas());
 		mainModel.setCenterPaneCanvas(mainView.getCenterPaneCanvas());
-		mainModel.startNewRound();
 
+		mainModel.startNewRound();
 		mView.showAndWait();
 	}
 

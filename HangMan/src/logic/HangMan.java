@@ -59,6 +59,14 @@ public class HangMan {
 	 * @throws HangManException
 	 */
 	public void processLetter(String letter) throws HangManException {
+		if (roundOver || roundWon) {
+			if (roundOver) {
+				System.out.println("Game Lost");
+			} else {
+				System.out.println("Game Won");
+			}
+			return;
+		}
 
 		if (!isStringValid(letter)) {
 			throw new HangManException("Input must be one letter from A to Z!");

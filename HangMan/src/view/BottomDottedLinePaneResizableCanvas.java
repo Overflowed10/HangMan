@@ -13,12 +13,6 @@ public class BottomDottedLinePaneResizableCanvas extends ResizableCanvas {
 	private String selectedWord;
 	private LinkedList<Integer> correctIndicesOfWord;
 
-	public void drawCanvas() {
-		clearCanvas();
-		drawLines();
-		drawLetters();
-	}
-
 	/**
 	 * Draws a black line for each character of the given word.
 	 */
@@ -55,6 +49,10 @@ public class BottomDottedLinePaneResizableCanvas extends ResizableCanvas {
 
 	public void setCorrectLetters(LinkedList<Integer> correctIndicesOfWord) {
 		this.correctIndicesOfWord = correctIndicesOfWord;
-		drawCanvas();
+		clearCanvas();
+		if (!(selectedWord == null)) {
+			drawLines();
+		}
+		drawLetters();
 	}
 }

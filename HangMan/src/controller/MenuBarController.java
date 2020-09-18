@@ -6,15 +6,18 @@ import view.MenuBarTop;
 
 public class MenuBarController {
 	private final MainModel mainModel;
+	private BottomInputPaneController bottomInputPaneController;
 	private MenuBarTop menuBarTop;
 	private MainView mView;
 
-	public MenuBarController(MainModel mainModel) {
+	public MenuBarController(MainModel mainModel, BottomInputPaneController bottomInputPaneController) {
 		this.mainModel = mainModel;
+		this.bottomInputPaneController = bottomInputPaneController;
 	}
 
 	public void createNewGame() {
 		mainModel.startNewRound();
+		bottomInputPaneController.getBottomInputPane().checkForGameState();
 	}
 
 	public void closeGame() {

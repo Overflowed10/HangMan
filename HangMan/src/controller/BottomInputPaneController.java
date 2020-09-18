@@ -16,14 +16,6 @@ public class BottomInputPaneController {
 
 	}
 
-	public BottomInputPane getBottomInputPane() {
-		return bottomInputPane;
-	}
-
-	public void setBottomInputPane(BottomInputPane bottomInputPane) {
-		this.bottomInputPane = bottomInputPane;
-	}
-
 	public void enterLetter() {
 		TextField textfield = bottomInputPane.getInputField();
 		String input = textfield.getText().toUpperCase();
@@ -37,6 +29,15 @@ public class BottomInputPaneController {
 			alert.setContentText(e.getMessage());
 			alert.showAndWait();
 		}
+		bottomInputPane.checkForGameState();
+	}
+
+	public BottomInputPane getBottomInputPane() {
+		return bottomInputPane;
+	}
+
+	public void setBottomInputPane(BottomInputPane bottomInputPane) {
+		this.bottomInputPane = bottomInputPane;
 	}
 
 }

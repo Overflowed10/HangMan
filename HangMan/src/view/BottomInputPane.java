@@ -3,6 +3,7 @@ package view;
 import controller.BottomInputPaneController;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
@@ -11,7 +12,8 @@ public class BottomInputPane extends Pane {
 	private BottomInputPaneController bottomInputPaneController;
 	private TextField inputField;
 	private Button ok;
-	private int numberOfWrongGuesses;
+	private boolean isWon;
+	private boolean isLost;
 
 	public BottomInputPane(BottomInputPaneController bottomInputPaneController) {
 		GridPane wrapperPane = new GridPane();
@@ -26,11 +28,17 @@ public class BottomInputPane extends Pane {
 
 	private TextField createInputBox() {
 		TextField input = new TextField();
+		input.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.ENTER) {
+				bottomInputPaneController.enterLetter();
+				input.clear();
+			}
+		});
 		return input;
 	}
 
 	private Button checkLetterButton() {
-		Button checkLetterButton = new Button("Lock in letter!");
+		Button checkLetterButton = new Button("[Enter] / [click]");
 		checkLetterButton.setOnMouseClicked(event -> bottomInputPaneController.enterLetter());
 		return checkLetterButton;
 	}
@@ -49,5 +57,38 @@ public class BottomInputPane extends Pane {
 
 	public void setInputField(TextField inputField) {
 		this.inputField = inputField;
+	}
+
+	public boolean isWon() {
+		return isWon;
+	}
+
+	public void setWon(boolean isWon) {
+		this.isWon = isWon;
+	}
+
+	public boolean isLost() {
+		return isLost;
+	}
+
+	public void setLost(boolean isLost) {
+		this.isLost = isLost;
+	}
+
+	public void checkForGameState() {
+		if (isLost || isWon) {
+			inputField.setVisible(false);
+			inputField.setDisable(true);
+			ok.setDisable(true);
+		} else {
+			if (!inputField.isVisible()) {
+				inputField.setVisible(true);
+				inputField.setDisable(false);
+			}
+			if (ok.isDisable()) {
+				ok.setDisable(false);
+			}
+		}
+
 	}
 }

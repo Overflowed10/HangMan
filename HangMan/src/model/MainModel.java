@@ -20,10 +20,12 @@ public class MainModel {
 
 	public void startNewRound() {
 		hangman.startNewRound();
-		dottedLineCanvas.setSelectedWord(hangman.getSelectedWord());
 		dottedLineCanvas.setCorrectLetters(hangman.getCorrectIndicesOfWord());
 		usedLetterCanvas.setWrongLetters(hangman.getWrongLetters());
 		centerPaneCanvas.setNumberOfWrongGuesses(hangman.getNumberOfWrongGuesses());
+		dottedLineCanvas.setSelectedWord(hangman.getSelectedWord());
+		bottomInputPane.setLost(false);
+		bottomInputPane.setWon(false);
 
 	}
 
@@ -32,6 +34,9 @@ public class MainModel {
 		dottedLineCanvas.setCorrectLetters(hangman.getCorrectIndicesOfWord());
 		usedLetterCanvas.setWrongLetters(hangman.getWrongLetters());
 		centerPaneCanvas.setNumberOfWrongGuesses(hangman.getNumberOfWrongGuesses());
+		bottomInputPane.setLost(false);
+		bottomInputPane.setWon(hangman.isRoundOver());
+		bottomInputPane.setLost(hangman.isRoundWon());
 
 	}
 
